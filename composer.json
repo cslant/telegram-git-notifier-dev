@@ -24,8 +24,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "CSlant\\LaravelTelegramGitNotifier\\": "packages/telegram-git-notifier/laravel-telegram-git-notifier/src/",
-            "CSlant\\TelegramGitNotifier\\": "packages/telegram-git-notifier/telegram-git-notifier/src/"
+            "CSlant\\LaravelTelegramGitNotifier\\": "packages/laravel-telegram-git-notifier/src/",
+            "CSlant\\TelegramGitNotifier\\": "packages/telegram-git-notifier/src/"
         }
     },
     "autoload-dev": {
