@@ -8,7 +8,8 @@
         "php": "^8.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "cslant/telegram-git-notifier": "^1.4"
+        "cslant/telegram-git-notifier": "^1.4",
+        "cslant/laravel-telegram-git-notifier": "^v1.0.8"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
