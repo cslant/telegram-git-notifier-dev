@@ -1,0 +1,33 @@
+version: '3.9'
+
+networks:
+  tgn:
+
+services:
+  server:
+    build:
+      context: .
+      args:
+        - PHP_VERSION_SELECTED=${PHP_VERSION_SELECTED:-8.3}
+      dockerfile: ./.docker/Dockerfile
+    container_name: '${CONTAINER_NAME:-tgn}-server'
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/config/php/php.ini:/usr/local/etc/php/conf.d/extra-php-config.ini
+    user: '${USER_ID:-1000}:${GROUP_ID:-1000}'
+    networks:
+      - tgn
+
+  nginx:
+    image: nginx:alpine
+    container_name: '${CONTAINER_NAME:-tgn}-nginx'
+    ports:
+      - '${APP_PORT:-1080}:80'
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/conf.d/:/etc/nginx/conf.d/
+      - ./.docker/log/nginx:/var/log/nginx/
+    depends_on:
+      - server
+    networks:
+      - tgn
