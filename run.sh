@@ -5,6 +5,8 @@ source .env
 set +a
 
 PROJECT_DIR=$(pwd)
+echo "🚀 Starting setup for $PROJECT_DIR"
+echo ''
 
 sync_package() {
     PACKAGE_DIR="$PROJECT_DIR/packages/$1"
@@ -15,7 +17,7 @@ sync_package() {
     if [ -z "$(ls -A "$PACKAGE_DIR")" ]; then
         echo "  ∟ Cloning $1 repository..."
         git clone git@github.com:"$USERNAME_REPO"/"$1".git .
-        composer install
+        docker compose run --rm -w /var/www/html server composer install
     else
         echo "  ∟ Pulling $1 repository..."
         git pull
@@ -39,15 +41,15 @@ if [ -f .env ]; then
     echo "  ∟ .env file exists"
 else
     echo "  ∟ Creating .env file"
-    cp .env.example .env
+    docker compose run --rm -w /var/www/html server cp .env.example .env
 fi
 
 if [ -d vendor ]; then
     echo "  ∟ vendor directory exists"
 else
     echo "  ∟ Running composer install"
-    composer install
-    php artisan key:generate
+    docker compose run --rm -w /var/www/html server composer install
+    docker compose run --rm -w /var/www/html server php artisan key:generate
 fi
 
 echo ''
