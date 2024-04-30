@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -a
+source .env
+set +a
+
 PROJECT_DIR=$(pwd)
 
 sync_package() {
@@ -10,14 +14,15 @@ sync_package() {
 
     if [ -z "$(ls -A "$PACKAGE_DIR")" ]; then
         echo "  ∟ Cloning $1 repository..."
-        git clone git@github.com:cslant/"$1".git .
+        git clone git@github.com:"$USERNAME_REPO"/"$1".git .
         composer install
-      else
+    else
         echo "  ∟ Pulling $1 repository..."
         git pull
-      fi
+    fi
 
     echo "✅ Done syncing $1"
+    echo ''
 }
 
 echo "📥 Installing packages"
@@ -35,7 +40,6 @@ if [ -f .env ]; then
 else
     echo "  ∟ Creating .env file"
     cp .env.example .env
-    php artisan key:generate
 fi
 
 if [ -d vendor ]; then
@@ -43,6 +47,7 @@ if [ -d vendor ]; then
 else
     echo "  ∟ Running composer install"
     composer install
+    php artisan key:generate
 fi
 
 echo ''
