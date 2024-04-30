@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da9b7a1dc1dd923105198c572cc7df8d",
+    "content-hash": "418eaac76029d356e50869494f9990cd",
     "packages": [
         {
             "name": "brick/math",
@@ -134,6 +134,81 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "cslant/telegram-git-notifier",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cslant/telegram-git-notifier.git",
+                "reference": "24a6b6c718c474e00940f43822ae65ee02e32ffa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cslant/telegram-git-notifier/zipball/24a6b6c718c474e00940f43822ae65ee02e32ffa",
+                "reference": "24a6b6c718c474e00940f43822ae65ee02e32ffa",
+                "shasum": ""
+            },
+            "require": {
+                "eleirbag89/telegrambotphp": "^1.4",
+                "guzzlehttp/guzzle": "^7.8",
+                "php": "^8.1|^8.2",
+                "symfony/http-foundation": "^6.4|^7.0",
+                "vlucas/phpdotenv": "^5.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v3.0",
+                "pestphp/pest": "^2.24",
+                "phpstan/phpstan": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "common/helpers.php"
+                ],
+                "psr-4": {
+                    "CSlant\\TelegramGitNotifier\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tan Nguyen",
+                    "email": "tannp27@gmail.com",
+                    "homepage": "https://tanhongit.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Send notification from Gitlab and Github events to Telegram",
+            "homepage": "https://github.com/cslant/telegram-git-notifier",
+            "keywords": [
+                "cslant",
+                "git-webhook",
+                "github-notifier",
+                "github-telegram-bot",
+                "gitlab-notifier",
+                "gitlab-telegram-bot",
+                "notify",
+                "telegram-bot",
+                "telegram-bot-github-notify",
+                "telegram-bot-gitlab-notify",
+                "telegram-git-notifier",
+                "telegram-notifier"
+            ],
+            "support": {
+                "issues": "https://github.com/cslant/telegram-git-notifier/issues",
+                "source": "https://github.com/cslant/telegram-git-notifier/tree/v1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/tanhongit",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-04-30T02:57:40+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -505,6 +580,63 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "eleirbag89/telegrambotphp",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eleirbag89/TelegramBotPHP.git",
+                "reference": "bc0dd1d1e400b1d860b1fc111b988a25fa02857f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eleirbag89/TelegramBotPHP/zipball/bc0dd1d1e400b1d860b1fc111b988a25fa02857f",
+                "reference": "bc0dd1d1e400b1d860b1fc111b988a25fa02857f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Telegram.php",
+                    "TelegramErrorLogger.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriele Grillo",
+                    "email": "gabry.grillo@alice.it"
+                }
+            ],
+            "description": "A very simple PHP Telegram Bot API",
+            "support": {
+                "issues": "https://github.com/Eleirbag89/TelegramBotPHP/issues",
+                "source": "https://github.com/Eleirbag89/TelegramBotPHP/tree/1.4.2"
+            },
+            "funding": [
+                {
+                    "url": "https://flattr.com/@Eleirbag89",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://paypal.me/eleirbag89",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://liberapay.com/eleirbag89",
+                    "type": "liberapay"
+                }
+            ],
+            "time": "2022-06-09T14:05:47+00:00"
         },
         {
             "name": "fruitcake/php-cors",
