@@ -8,6 +8,10 @@ PROJECT_DIR=$(pwd)
 echo "🚀 Starting setup for $PROJECT_DIR"
 echo ''
 
+echo "🐳 Starting docker containers"
+docker compose up -d
+echo ''
+
 sync_package() {
     PACKAGE_DIR="$PROJECT_DIR/packages/$1"
 
@@ -46,6 +50,8 @@ fi
 
 if [ -d vendor ]; then
     echo "  ∟ vendor directory exists"
+    echo "  ∟ Running composer update"
+    docker compose run --rm -w /var/www/html server composer update
 else
     echo "  ∟ Running composer install"
     docker compose run --rm -w /var/www/html server composer install
