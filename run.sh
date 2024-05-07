@@ -21,10 +21,11 @@ sync_package() {
     if [ -z "$(ls -A "$PACKAGE_DIR")" ]; then
         echo "  ∟ Cloning $1 repository..."
         git clone git@github.com:"$USERNAME_REPO"/"$1".git .
-        docker compose run --rm -w /var/www/html server composer install
+        docker compose run --rm -w /var/www/html/packages/"$1" server composer install
     else
         echo "  ∟ Pulling $1 repository..."
         git pull
+        docker compose run --rm -w /var/www/html/packages/"$1" server composer update
     fi
 
     echo "✅ Done syncing $1"
