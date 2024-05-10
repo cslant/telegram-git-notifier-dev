@@ -19,7 +19,9 @@ sync_package() {
     echo "🔄 Syncing $1"
 
     if [ -z "$(ls -A "$PACKAGE_DIR")" ]; then
-        echo "  ∟ Cloning $1 repository..."
+        echo "  ∟ $PACKAGE_DIR directory is empty"
+        echo "  ∟ CD $(pwd)"
+        echo "  ∟ Cloning $USERNAME_REPO/$1 repository..."
         git clone git@github.com:"$USERNAME_REPO"/"$1".git .
         docker compose run --rm -w /var/www/html/packages/"$1" server composer install
     else
@@ -57,6 +59,10 @@ else
     echo "  ∟ Running composer install"
     docker compose run --rm -w /var/www/html server composer install
     docker compose run --rm -w /var/www/html server php artisan key:generate
+    docker compose run --rm -w /var/www/html server php artisan migrate
+    docker compose run --rm -w /var/www/html server php artisan db:seed
+    docker compose run --rm -w /var/www/html server php artisan storage:link
+    docker compose run --rm -w /var/www/html server php artisan vendor:publish --provider="CSlant\LaravelTelegramGitNotifier\Providers\TelegramGitNotifierServiceProvider" --tag="config_jsons"
 fi
 
 echo ''
